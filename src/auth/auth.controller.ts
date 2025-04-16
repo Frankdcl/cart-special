@@ -13,23 +13,16 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  async login(@Body() loginUserDto: LoginUserDto, @Res() res: Response) {
-    try {
-      const { token, user } = await this.authService.login(loginUserDto);
-      
-      return res.status(HttpStatus.OK).json({
-        success: true,
-        token,
-        user,
-        redirectTo: 'public/dashboard.html'
-      });
-    } catch (error) {
-      return res.status(HttpStatus.UNAUTHORIZED).json({
-        success: false,
-        message: error.message || 'Error de autenticación'
-      });
-    }
-  }
+async login(@Body() loginUserDto: LoginUserDto) {
+  const { token, user } = await this.authService.login(loginUserDto);
+
+  return {
+    success: true,
+    token,
+    user,
+    redirectTo: 'public/dashboard.html'
+  };
+}
 
   @Post('register')
   create(@Body() createUserDto: CreateUserDto) {
