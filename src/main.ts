@@ -11,7 +11,7 @@ async function bootstrap() {
 
   // Habilitar CORS para todos los orígenes
   app.enableCors({
-    origin: ['https://lustrous-jelly-a302ba.netlify.app'], // ⚠️ Solo dominios permitidos
+    origin: ['https://spiffy-macaron-9ff863.netlify.app/'], // ⚠️ Solo dominios permitidos
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true, // Solo si usas cookies. Si usas localStorage, puedes ponerlo en false.
