@@ -21,7 +21,7 @@ export class AuthController {
         success: true,
         token,
         user,
-        redirectTo: '/dashboard.html'
+        redirectTo: 'public/dashboard.html'
       });
     } catch (error) {
       return res.status(HttpStatus.UNAUTHORIZED).json({
