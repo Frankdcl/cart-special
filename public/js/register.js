@@ -8,7 +8,7 @@ const form = document.querySelector(".form");
       const password = document.querySelector(".password").value;
 
       try {
-        const res = await fetch(`${window.APP_CONFIG.API_BASE_URL}/auth/register`, {
+        const res = await fetch(`https://cart-special.vercel.app/auth/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
