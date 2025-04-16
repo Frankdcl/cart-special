@@ -10,28 +10,11 @@ async function bootstrap() {
   const logger = new Logger('bootstrap');
 
   // Habilitar CORS para todos los orígenes
-  const allowedOrigins = [
-    'http://localhost:5501',
-    'https://lustrous-jelly-a302ba.netlify.app',
-    'https://cart-special.vercel.app',
-  ];
-
   app.enableCors({
-    origin: (origin, callback) => {
-      // Permitir llamadas desde herramientas como Postman (sin origen)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: ['https://lustrous-jelly-a302ba.netlify.app'], // ⚠️ Solo dominios permitidos
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: [
-      'Content-Type',
-      'Authorization',
-      'ngrok-skip-browser-warning',
-    ],
-    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Solo si usas cookies. Si usas localStorage, puedes ponerlo en false.
   });
 
   app.useGlobalPipes(
