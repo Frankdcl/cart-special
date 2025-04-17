@@ -4,11 +4,6 @@ import { Response } from 'express';
 
 @Controller()
 export class AppController {
-  @Get()
-  redirectToLogin(@Res() res: Response) {
-    return res.redirect('public/login.html');
-  }
-  
   // en AppController o uno separado
   @Options('*')
   handleOptions(@Res() res: Response) {

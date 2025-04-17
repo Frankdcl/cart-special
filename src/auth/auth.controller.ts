@@ -13,26 +13,13 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-async login(@Body() loginUserDto: LoginUserDto) {
-  const { token, user } = await this.authService.login(loginUserDto);
-
-  return {
-    success: true,
-    token,
-    user,
-    redirectTo: 'public/dashboard.html'
-  };
-}
+  async login(@Body() loginUserDto: LoginUserDto) {
+    return this.authService.login(loginUserDto);
+  }
 
   @Post('register')
   create(@Body() createUserDto: CreateUserDto) {
     return this.authService.create(createUserDto);
-  }
-
-  @Get('private')
-  @Auth()
-  privatePath (){
-    return 'Si estas autorizado';
   }
 
 }

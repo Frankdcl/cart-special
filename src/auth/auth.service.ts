@@ -38,7 +38,7 @@ export class AuthService {
       await this.sendEmailValidation(user.email);
 
       return {
-        ...user,
+        user,
         token: this.getJwtToken({ id: user.id }),
       };
     } catch (error) {
@@ -82,10 +82,6 @@ export class AuthService {
 
   async sendEmailValidation(email: string): Promise<boolean> {
     try {
-      const token = this.jwtService.sign(
-        { email, isValidationToken: true },
-        { expiresIn: '24h' },
-      );
 
       const html = `
         <h1>Thank for registering</h1>
