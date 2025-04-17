@@ -1,5 +1,5 @@
 // app.controller.ts
-import { Controller, Get, Options, Res } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { Response } from 'express';
 
 @Controller()
@@ -8,7 +8,8 @@ export class AppController {
   redirectToLogin(@Res() res: Response) {
     return res.redirect('public/login.html');
   }
-
+  
+  // en AppController o uno separado
   @Options('*')
   handleOptions(@Res() res: Response) {
     res.set({
@@ -19,4 +20,5 @@ export class AppController {
     return res.status(204).send();
   }
 
+  
 }
